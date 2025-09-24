@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Rental Calendar</title>
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@6.1.8/index.global.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    #calendar { max-width: 900px; margin: 40px auto; }
+  </style>
+</head>
+<body>
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        events: {
+          url: 'https://ical.your.rentals/export/ical/9oLgDlOnQRZWMY2LqWb6b24avPEVJ5Xr/en.ics',
+          format: 'ics'
+        }
+      });
+      calendar.render();
+    });
+  </script>
+</body>
+</html>
